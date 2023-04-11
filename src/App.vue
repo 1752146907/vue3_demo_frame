@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
-import axios from "axios";
-import qs from "query-string";
+import { getList, passportLogout } from "@/api/index";
 
-const handlrGetList = () => {
+const handlrGetList = async () => {
   const params = { releaseType: 1, page: 1, limit: 20 };
-  axios.get("/api/authorization/contentList", {
-    params,
-    paramsSerializer: (obj) => {
-      return qs.stringify(obj);
-    },
-  });
+  try {
+    await getList(params);
+  } catch {}
 };
 handlrGetList();
 console.log(11111111111111);
+
+const handleLogout = async () => {
+  await passportLogout({ status: 1 });
+};
 </script>
 
 <template>
@@ -36,7 +36,7 @@ console.log(11111111111111);
       </nav>
     </div>
   </header>
-
+  <button @click="handleLogout">退出</button>
   <RouterView />
 </template>
 
