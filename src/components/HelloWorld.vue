@@ -1,7 +1,26 @@
-<script setup lang="ts">
-defineProps<{
-  msg: string
-}>()
+<script lang="ts">
+import { defineComponent, ref } from "vue";
+
+export default defineComponent({
+  props: {
+    msg: {
+      type: String,
+      default: "",
+    },
+  },
+  setup(props, { emit }) {
+    // watch(
+    //   () => props.updateRow,
+    //   (newValue) => {
+    //     accountInfo.value = newValue;
+    //     irAccount.value = newValue.irAccount;
+    //   }
+    // );
+    const aa = ref("1212");
+
+    return { aa };
+  },
+});
 </script>
 
 <template>
@@ -10,7 +29,8 @@ defineProps<{
     <h3>
       You’ve successfully created a project with
       <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>. What's next?
+      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
+      What's next?
     </h3>
   </div>
 </template>
